@@ -14,7 +14,7 @@ io.on('connection', function (socket){
 	//event - emits an event - name and data to send
 	
 	socket.on('message', function(message){
-		console.log('Message Received  :' + message.text);
+		console.log('Message Received  :' + message.text + ' by ' + message.name);
 		//broadcast message to everybody but the sender
 		message.timeStamp = moment().valueOf();
 		io.emit('message', message);
@@ -24,6 +24,7 @@ io.on('connection', function (socket){
 
 	//system message
 	socket.emit('message', {
+		name:'System',
 		text : 'welcome to the Bchat',
 		timeStamp: moment.valueOf()
 	});
