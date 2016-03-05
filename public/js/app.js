@@ -5,12 +5,13 @@ socket.on('connect', function(){
 });
 
 socket.on('message', function(message){
+	var momentTimeStamp = moment.utc(message.timeStamp);
 	console.log('new Message:');
 	console.log(message.text);
 
 	// . for classes , id - #. tagname - just the tag name
 	
-	jQuery('.messages').append('<p>'+ message.text +'</p>');
+	jQuery('.messages').append('<p><strong>'+ momentTimeStamp.local().format('h:mm a') +':  </strong>'+ message.text +'</p>');
 
 });
 
