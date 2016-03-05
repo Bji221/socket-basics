@@ -20,13 +20,16 @@ socket.on('connect', function(){
 
 socket.on('message', function(message){
 	var momentTimeStamp = moment.utc(message.timeStamp);
-	var $message = jQuery('.messages');
-	console.log('new Message:');
+	var $messages = jQuery('.messages');
+	var $message = jQuery('<li class="list-group-item"></li>');
+	console.log('New Message:');
 	console.log(message.text);
 
 	// . for classes , id - #. tagname - just the tag name
 	
-	$message.append('<p><strong>'+ message.name + ', '+momentTimeStamp.local().format('h:mm a') +':  </strong>'+ message.text +'</p>');
+	$message.append('<p><strong>'+ message.name + ', '+momentTimeStamp.local().format('h:mm a') +':  </strong></p>');
+	$message.append('<p>'+message.text +'</p>');
+	$messages.append($message);
 
 });
 
