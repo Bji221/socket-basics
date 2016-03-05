@@ -8,6 +8,10 @@ socket.on('message', function(message){
 	console.log('new Message:');
 	console.log(message.text);
 
+	// . for classes , id - #. tagname - just the tag name
+	
+	jQuery('.messages').append('<p>'+ message.text +'</p>');
+
 });
 
 // Handles submitting of new messages!
